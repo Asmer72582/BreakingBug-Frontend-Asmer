@@ -1,5 +1,9 @@
 # Breaking Bug - Frontend Repository
 
+# Submission 
+- [Google Sheet Link](https://docs.google.com/spreadsheets/d/1rm74HP-If81L3MS0ql-Yfi5EAtvQTArTlBr2GDO-52Q/edit?gid=0#gid=0)
+-[Vercel APP](#)
+
 <img src="https://images.prismic.io/ieeemuj/Zqu58B5LeNNTxuyE_BreakingBugBanner.png?auto=format,compress" alt="Breaking Bug Poster">
 
 ## Table of Content
