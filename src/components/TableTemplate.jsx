@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
-import {Table, TableBody, TableCell, TableContainer, TableRow, styled} from '@mui/material';
+import React, { useState } from 'react'
+import { Table, TableBody, TableCell, TableContainer, TableRow, styled, tableCellClasses, buttonHover } from '@mui/material';
 
-const TableTemplate = ({columns, rows}) => {
+const TableTemplate = ({ columns, rows }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   return (
@@ -13,7 +13,7 @@ const TableTemplate = ({columns, rows}) => {
               <StyledTableCell
                 key={column.id}
                 align={column.align}
-                style={{minWidth: column.minWidth}}
+                style={{ minWidth: column.minWidth }}
               >
               </StyledTableCell>
             ))}
@@ -33,14 +33,15 @@ const TableTemplate = ({columns, rows}) => {
                         <StyledTableCell key={column.Id} align={column.align}>
                           {
                             column.format && typeof value === 'number'
-                              ? column.format(id)
+                              ? column.format(column.id)
                               : value
                           }
                         </StyledTableCell>
                       );
                     })}
                     <StyledTableCell align="center">
-                      <ButtonHaver row={row}/>
+                      {/* abhi k liye not working */}
+                      {/* <ButtonHover row={row} /> */}
                     </StyledTableCell>
                   </StyledTableRow>
                 );
@@ -55,16 +56,17 @@ const TableTemplate = ({columns, rows}) => {
       page={page}
       onPageChange={(event, newPage) => setPage()}
       onRowsPerPageChange={(event) => {
-      setRowsPerPage(parseInt(event.target.value, 5));
-      setPage(0);
-    }}
+        setRowsPerPage(parseInt(event.target.value, 5));
+        setPage(0);
+      }}
     </>
   )
 }
 
 export default TableTemplate
 
-const StyledTableCell = styled(TableCell)(({theme}) => ({
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  // isko import nhi kiya tha
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
@@ -74,7 +76,7 @@ const StyledTableCell = styled(TableCell)(({theme}) => ({
   },
 }));
 
-const StyledTableRow = styled(TableRow)(({theme}) => ({
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
     backgroundColor: theme.palette.action.hover,
   },

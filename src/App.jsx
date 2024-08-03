@@ -23,12 +23,6 @@ const App = () => {
 
   const { isLoggedIn, currentToken, currentRole, productData } = useSelector(state => state.user);
 
-  useEffect(() =>
-     {
-
-
-    dispatch(isTokenValid());
-  }, [dispatch]); 
 
   return (
     <BrowserRouter>
@@ -84,9 +78,9 @@ const App = () => {
         </>
       }
 
-        {(isLoggedIn && currentRole === "Seller") && (
-           <SellerDashboard />
-            )}
+      {(isLoggedIn && currentRole === "Seller") && (
+        <SellerDashboard />
+      )}
 
     </BrowserRouter >
   )

@@ -28,7 +28,8 @@ const AlertDialogSlide = ({ dialog, showDialog, setShowDialog }) => {
                 <div>
                     <RedButton onClick={() => {
                         handleClose()
-                        taskHandler()
+                        // tasker handler was never created
+                        // taskHandler()
                     }}>Yes</RedButton>
                 </div>
             </DialogActions>

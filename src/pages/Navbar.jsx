@@ -30,6 +30,7 @@ const Navbar = () => {
 
     const totalQuantity = currentUser && currentUser.cartDetails && 0;
 
+    const [anchorElNav, setAnchorElNav] = React.useState(null);
     const navigate = useNavigate()
     const dispatch = useDispatch();
 
@@ -38,9 +39,10 @@ const Navbar = () => {
             console.log(currentUser);
             dispatch(updateCustomer(currentUser, currentUser._id));
         }
-    }, [currentRole, currentUser, dispatch, ancorElNav])
+        // anchorElNav ka spelling error tha
+    }, [currentRole, currentUser, dispatch, anchorElNav])
 
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
+
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [anchorElSign, setAnchorElSign] = React.useState(null);
 
@@ -50,13 +52,14 @@ const Navbar = () => {
     const [isCartOpen, setIsCartOpen] = React.useState(false);
 
     // Cart
-    const handleOpen Cart = () => {
+    // cart close wala nhi tha
+    const handleCloseCart = () => {
         setIsCartOpen(true);
     };
-
     const handleOpenCart = () => {
         setIsCartOpen(false);
     };
+
 
     // Navigation Menu
     const handleOpenNavMenu = (event) => {
@@ -164,15 +167,15 @@ const Navbar = () => {
                                         horizontal: 'left',
                                     }}
                                     open={Boolean(anchorElNav)}
-                                  
+
                                     onClick={handleCloseUserMenu}
                                     sx={{
                                         display: { xs: 'block', md: 'none' },
                                     }}
                                 >
                                     <MenuItem onClick={() => {
-                                      navigate("/Customerlogin")
-                                     }}>
+                                        navigate("/Customerlogin")
+                                    }}>
                                         <Typography textAlign="center">Sign in as customer</Typography>
                                     </MenuItem>
                                     <MenuItem onClick={() => {

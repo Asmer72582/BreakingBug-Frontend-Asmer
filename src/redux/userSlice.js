@@ -1,9 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, current } from '@reduxjs/toolkit';
 import jwtDecode from 'jwt-decode';
 
 const initialState = {
     status: 'idle',
     loading: false,
+    // currentUser: "user",
+    // currentRole: "Customer",
+    // currentToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFzbWVyIiwiaWF0IjoxNTE2MjM5MDIyfQ.7wBSsD-UD6DniH-h1dGSX8hh-TGehJTz3J2IhVGqyZI",
     currentUser: JSON.parse(localStorage.getItem('user')) || null,
     currentRole: (JSON.parse(localStorage.getItem('user')) || {}).role || null,
     currentToken: (JSON.parse(localStorage.getItem('user')) || {}).token || null,
@@ -42,6 +45,7 @@ export const updateShippingDataInLocalStorage = (shippingData) => {
     };
     localStorage.setItem('user', JSON.stringify(updatedUser));
 };
+
 
 const userSlice = createSlice({
     name: 'user',
@@ -121,13 +125,13 @@ const userSlice = createSlice({
         removeSpecificProduct: (state, action) => {
             const productIdToRemove = action.payload;
             state.currentUser.cartDetails = state.currentUser.cartDetails.filter(
-              (cartItem) => cartItem._id !== productIdToRemove
+                (cartItem) => cartItem._id !== productIdToRemove
 
             );
 
-            
-          },
-        
+
+        },
+
 
         fetchProductDetailsFromCart: (state, action) => {
             const productIdToFetch = action.payload;
@@ -171,7 +175,8 @@ const userSlice = createSlice({
 
         isTokenValid: (state) => {
             const decodedToken = jwtDecode(state.currentToken);
-            if (state.currentToken) {              state.isLoggedIn = true;
+            if (state.currentToken) {
+                state.isLoggedIn = true;
             } else {
                 localStorage.removeItem('user');
                 state.currentUser = null;
@@ -279,7 +284,9 @@ const userSlice = createSlice({
     },
 });
 
+console.log(initialState);
 export const {
+
     authRequest,
     underControl,
     stuffAdded,
@@ -311,7 +318,12 @@ export const {
     removeAllFromCart,
     fetchProductDetailsFromCart,
     updateCurrentUser,
-    
+    // ye do ko add kiya kyu ki they are used in other files
+    getCustomersListFailed,
+    setFilteredProducts,
+
+
+
 } = userSlice.actions;
 
 export const userReducer = userSlice.reducer;

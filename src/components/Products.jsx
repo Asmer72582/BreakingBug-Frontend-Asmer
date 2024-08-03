@@ -8,10 +8,13 @@ import { useNavigate } from 'react-router-dom';
 import Popup from './Popup';
 import { addStuff } from '../redux/userHandle';
 
-const Products = ({}) => {
+const Products = ({ }) => {
   const dispatch = useDispatch();
 
   const itemsPerPage = 9;
+
+  // navigate was not declare
+  const navigate = useNavigate();
 
   const { currentRole, responseSearch } = useSelector();
   const [currentPage, setCurrentPage] = useState(1);
@@ -85,12 +88,12 @@ const Products = ({}) => {
       </ProductGrid>
 
       <Container sx={{ mt: 10, mb: 10, display: "flex", justifyContent: 'center', alignItems: "center" }}>
-        <Pagination
+        {/* <Pagination
           count={Math.ceil(productData.length / itemsPerPage)}
           page={currentPage}
           color="secondary"
 
-        />
+        /> */}
       </Container>
 
       <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />

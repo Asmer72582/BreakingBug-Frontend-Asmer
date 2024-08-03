@@ -38,7 +38,7 @@ const AuthenticationPage = ({ mode, role }) => {
             return;
         }
 
-         if (mode === "Register") {
+        if (mode === "Register") {
             const name = event.target.userName.value;
 
             if (!name) {
@@ -71,7 +71,8 @@ const AuthenticationPage = ({ mode, role }) => {
     };
 
     const handleInputChange = (event) => {
-        const { name } = event.target;
+        const { name } = event.target.value;
+
         if (name === 'email') setEmailError(false);
         if (name === 'password') setPasswordError(false);
         if (name === 'userName') setUserNameError(false);

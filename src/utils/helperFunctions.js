@@ -1,6 +1,6 @@
-export const timeAgo = (date) => {
+export const timeAgo = (reviewDate) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    
+
     const today = new Date();
     const timeDifference = today - reviewDate;
 

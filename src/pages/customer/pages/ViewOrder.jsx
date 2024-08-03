@@ -8,14 +8,14 @@ import { addToCart, underControl } from '../../../redux/userSlice';
 import { BasicButton, GreenButton } from '../../../utils/buttonStyles';
 import { getProductDetails, updateStuff } from '../../../redux/userHandle';
 import Popup from '../../../components/Popup';
-import { generateRandomColor, timeAgo} from '../../../utils/helperFunctions';
+import { generateRandomColor, timeAgo } from '../../../utils/helperFunctions';
 
 const ViewOrder = () => {
     const dispatch = useDispatch();
     const params = useParams();
     const productID = params.id;
 
-    const { currentUser, currentRole,productDetails, loading, status, error, responseReview, responseDetails } = useSelector(state => state.user);
+    const { currentUser, currentRole, productDetails, loading, status, error, responseReview, responseDetails } = useSelector(state => state.user);
 
     useEffect(() => {
         dispatch(getProductDetails(productID));
@@ -74,7 +74,7 @@ const ViewOrder = () => {
             setMessage("Network Error");
             setShowPopup(true);
         }
-    }, [dispatch, responseReview,productID, status, error]);
+    }, [dispatch, responseReview, productID, status, error]);
 
     return (
         <>
@@ -153,10 +153,11 @@ const ViewOrder = () => {
                                             <ReviewCard key={index}>
                                                 <ReviewCardDivision>
                                                     <Avatar sx={{ width: "60px", height: "60px", marginRight: "1rem", backgroundColor: generateRandomColor(review._id) }}>
-                                                        {String(reviewreviewername).charAt(0)}
+                                                        {/* reviewreviewername ye kya hota hai bhai */}
+                                                        {String(review.reviewername).charAt(0)}
                                                     </Avatar>
                                                     <ReviewDetails>
-                                                        <Typography variant="h6">{reviewreviewername}</Typography>
+                                                        <Typography variant="h6">{review.reviewername}</Typography>
                                                         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
 
                                                             <Typography variant="body2">
@@ -166,7 +167,7 @@ const ViewOrder = () => {
                                                         <Typography variant="subtitle1">Rating: {review.rating}</Typography>
                                                         <Typography variant="body1">{review.comment}</Typography>
                                                     </ReviewDetails>
-                                                    {review.reviewer._id === reviewer &&
+                                                    {review.reviewer._id === review.reviewername &&
                                                         <>
                                                             <IconButton onClick={handleOpenMenu} sx={{ width: "4rem", color: 'inherit', p: 0 }}>
                                                                 <MoreVert sx={{ fontSize: "2rem" }} />

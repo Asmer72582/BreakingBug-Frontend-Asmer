@@ -6,9 +6,13 @@ import emptyCart from "../../../assets/cartimg.png"
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 import { addToCart, removeAllFromCart, removeFromCart } from '../../../redux/userSlice';
-import { BasicButton, LightPurpleButton } from '../../../utils/styles';
+// import { BasicButton, LightPurpleButton } from '../../../utils/styles';
+
 import { useNavigate } from 'react-router-dom';
-import { updateCustomer } from '../../../redux/userSlice';
+import { updateCustomer } from '../../../redux/userHandle';
+
+
+
 
 const Cart = ({ setIsCartOpen }) => {
 
@@ -74,11 +78,11 @@ const Cart = ({ setIsCartOpen }) => {
     return (
         <StyledContainer>
             <TopContainer>
-                <LightPurpleButton onClick={() => {
+                <button onClick={() => {
                     setIsCartOpen(false)
                 }}>
                     <KeyboardDoubleArrowLeftIcon /> Continue Shopping
-                </LightPurpleButton>
+                </button>
                 {cartDetails.length < 0 || (
                     <IconButton
                         sx={{ backgroundColor: "#3a3939", color: "white" }}
@@ -136,12 +140,12 @@ const Cart = ({ setIsCartOpen }) => {
                                         </Button>
                                     </ButtonContainer>
                                     <ButtonContainer>
-                                        <BasicButton
+                                        <button
                                             sx={{ mt: 2 }}
                                             onClick={() => productViewHandler(data._id)}
                                         >
                                             View
-                                        </BasicButton>
+                                        </button>
                                         <Button
                                             variant="contained"
                                             color="success"
