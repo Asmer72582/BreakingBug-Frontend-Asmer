@@ -4,7 +4,7 @@ import jwtDecode from 'jwt-decode';
 const initialState = {
     status: 'idle',
     loading: false,
-    // currentUser: "user",
+    // currentUser: "Asmer",
     // currentRole: "Customer",
     // currentToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFzbWVyIiwiaWF0IjoxNTE2MjM5MDIyfQ.7wBSsD-UD6DniH-h1dGSX8hh-TGehJTz3J2IhVGqyZI",
     currentUser: JSON.parse(localStorage.getItem('user')) || null,
